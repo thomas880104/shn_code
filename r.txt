@@ -1,0 +1,282 @@
+TensorFlow 2.0 Upgrade Script
+-----------------------------
+Converted 25 files
+Detected 4 issues that require attention
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+File: .\model.py
+--------------------------------------------------------------------------------
+.\model.py:15:18: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+.\model.py:17:17: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+--------------------------------------------------------------------------------
+File: .\train_dsd_100.py
+--------------------------------------------------------------------------------
+.\train_dsd_100.py:118:12: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+--------------------------------------------------------------------------------
+File: .\train_mir_1k.py
+--------------------------------------------------------------------------------
+.\train_mir_1k.py:111:12: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+================================================================================
+Detailed log follows:
+
+================================================================================
+================================================================================
+Input tree: '.'
+================================================================================
+--------------------------------------------------------------------------------
+Processing file '.\\config.py'
+ outputting to 'ver2/config.py'
+--------------------------------------------------------------------------------
+
+17:19: INFO: Renamed 'tf.ConfigProto' to 'tf.compat.v1.ConfigProto'
+19:20: INFO: Renamed 'tf.GPUOptions' to 'tf.compat.v1.GPUOptions'
+35:19: INFO: Renamed 'tf.ConfigProto' to 'tf.compat.v1.ConfigProto'
+37:20: INFO: Renamed 'tf.GPUOptions' to 'tf.compat.v1.GPUOptions'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\eval_dsd_100.py'
+ outputting to 'ver2/eval_dsd_100.py'
+--------------------------------------------------------------------------------
+
+16:14: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+17:14: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+20:10: INFO: Renamed 'tf.make_template' to 'tf.compat.v1.make_template'
+30:5: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+33:13: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+38:8: INFO: Renamed 'tf.train.Saver' to 'tf.compat.v1.train.Saver'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\eval_mir_1k.py'
+ outputting to 'ver2/eval_mir_1k.py'
+--------------------------------------------------------------------------------
+
+16:14: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+17:14: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+19:10: INFO: Renamed 'tf.make_template' to 'tf.compat.v1.make_template'
+28:5: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+31:13: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+36:8: INFO: Renamed 'tf.train.Saver' to 'tf.compat.v1.train.Saver'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\model.py'
+ outputting to 'ver2/model.py'
+--------------------------------------------------------------------------------
+
+9:19: INFO: tf.random_normal_initializer requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+9:19: INFO: Renamed 'tf.random_normal_initializer' to 'tf.compat.v1.random_normal_initializer'
+10:17: INFO: tf.constant_initializer requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+10:17: INFO: Renamed 'tf.constant_initializer' to 'tf.compat.v1.constant_initializer'
+12:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+15:18: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+15:18: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+17:17: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+17:17: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+19:15: INFO: Added keywords to args of function 'tf.nn.conv2d'
+19:15: INFO: Renamed keyword argument for tf.nn.conv2d from filter to filters
+28:11: INFO: Added keywords to args of function 'tf.nn.max_pool'
+28:11: INFO: Renamed keyword argument for tf.nn.max_pool from value to input
+28:11: INFO: Renamed 'tf.nn.max_pool' to 'tf.nn.max_pool2d'
+45:14: INFO: Added keywords to args of function 'tf.shape'
+46:10: INFO: Changed tf.image.resize_nearest_neighbor call to tf.image.resize(..., method=tf.image.ResizeMethod.NEAREST_NEIGHBOR).
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\train_dsd_100.py'
+ outputting to 'ver2/train_dsd_100.py'
+--------------------------------------------------------------------------------
+
+62:14: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+63:14: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+67:13: INFO: Added keywords to args of function 'tf.reduce_mean'
+69:13: INFO: Added keywords to args of function 'tf.reduce_mean'
+71:13: INFO: Added keywords to args of function 'tf.reduce_mean'
+73:13: INFO: Added keywords to args of function 'tf.reduce_mean'
+77:20: INFO: tf.train.exponential_decay requires manual check. To use learning rate decay schedules with TensorFlow 2.0, switch to the schedules in `tf.keras.optimizers.schedules`.
+
+77:20: INFO: Renamed 'tf.train.exponential_decay' to 'tf.compat.v1.train.exponential_decay'
+79:16: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+88:5: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+91:13: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+118:12: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+118:12: INFO: Renamed 'tf.train.Saver' to 'tf.compat.v1.train.Saver'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\train_mir_1k.py'
+ outputting to 'ver2/train_mir_1k.py'
+--------------------------------------------------------------------------------
+
+57:14: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+58:14: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+60:10: INFO: Renamed 'tf.make_template' to 'tf.compat.v1.make_template'
+62:13: INFO: Added keywords to args of function 'tf.reduce_mean'
+64:13: INFO: Added keywords to args of function 'tf.reduce_mean'
+66:13: INFO: Added keywords to args of function 'tf.reduce_mean'
+68:13: INFO: Added keywords to args of function 'tf.reduce_mean'
+73:20: INFO: tf.train.exponential_decay requires manual check. To use learning rate decay schedules with TensorFlow 2.0, switch to the schedules in `tf.keras.optimizers.schedules`.
+
+73:20: INFO: Renamed 'tf.train.exponential_decay' to 'tf.compat.v1.train.exponential_decay'
+75:16: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+83:5: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+86:13: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+111:12: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+111:12: INFO: Renamed 'tf.train.Saver' to 'tf.compat.v1.train.Saver'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\util.py'
+ outputting to 'ver2/util.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\mir_eval\\beat.py'
+ outputting to 'ver2/mir_eval\\beat.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\mir_eval\\chord.py'
+ outputting to 'ver2/mir_eval\\chord.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\mir_eval\\display.py'
+ outputting to 'ver2/mir_eval\\display.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\mir_eval\\hierarchy.py'
+ outputting to 'ver2/mir_eval\\hierarchy.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\mir_eval\\io.py'
+ outputting to 'ver2/mir_eval\\io.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\mir_eval\\key.py'
+ outputting to 'ver2/mir_eval\\key.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\mir_eval\\melody.py'
+ outputting to 'ver2/mir_eval\\melody.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\mir_eval\\multipitch.py'
+ outputting to 'ver2/mir_eval\\multipitch.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\mir_eval\\onset.py'
+ outputting to 'ver2/mir_eval\\onset.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\mir_eval\\pattern.py'
+ outputting to 'ver2/mir_eval\\pattern.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\mir_eval\\segment.py'
+ outputting to 'ver2/mir_eval\\segment.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\mir_eval\\separation.py'
+ outputting to 'ver2/mir_eval\\separation.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\mir_eval\\sonify.py'
+ outputting to 'ver2/mir_eval\\sonify.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\mir_eval\\tempo.py'
+ outputting to 'ver2/mir_eval\\tempo.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\mir_eval\\transcription.py'
+ outputting to 'ver2/mir_eval\\transcription.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\mir_eval\\transcription_velocity.py'
+ outputting to 'ver2/mir_eval\\transcription_velocity.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\mir_eval\\util.py'
+ outputting to 'ver2/mir_eval\\util.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\mir_eval\\__init__.py'
+ outputting to 'ver2/mir_eval\\__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
