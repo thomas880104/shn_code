@@ -1,12 +1,25 @@
 import tensorflow as tf
 from os import walk
 import os
+import matplotlib.pyplot as plt
 import numpy as np
 from util import get_wav, to_spec
 from model import infer
 from config import NetConfig_MIR_1K
 from random import *
 import math
+from scipy.io.wavfile import read
+
+def wav_to_spec(mixed_wav, src1_wav, src2_wav):
+
+    mixed_spec = to_spec(mixed_wav)
+    src1_spec = to_spec(src1_wav)
+    src2_spec = to_spec(src2_wav)
+    mixed_spec_mag = np.abs(mixed_spec)
+    src1_spec_mag = np.abs(src1_spec)
+    src2_spec_mag = np.abs(src2_spec)
+    return mixed_spec_mag, src1_spec_mag, src2_spec_mag
+
 
 #load data
 trainMixed = []
@@ -22,12 +35,8 @@ for (root, dirs, files) in walk(NetConfig_MIR_1K.DATA_PATH):
         if f.startswith("abjones") or f.startswith("amy"):
             filename = '{}/{}'.format(root, f)
             mixed_wav, src1_wav, src2_wav = get_wav(filename)
-            mixed_spec = to_spec(mixed_wav)
-            src1_spec = to_spec(src1_wav)
-            src2_spec = to_spec(src2_wav)
-            mixed_spec_mag = np.abs(mixed_spec)
-            src1_spec_mag = np.abs(src1_spec)
-            src2_spec_mag = np.abs(src2_spec)
+            mixed_spec_mag, src1_spec_mag, src2_spec_mag \
+                = wav_to_spec(mixed_wav, src1_wav, src2_wav)
 
             maxVal= np.max(mixed_spec_mag)
             mixed_spec_mag = mixed_spec_mag / maxVal
